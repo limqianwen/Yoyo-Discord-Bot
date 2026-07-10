@@ -9,7 +9,7 @@ def connect_database():
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
         database=os.getenv("DB_NAME")
-    )
+        )
 
         if connection.is_connected():
             print("✅ Database connected!")
