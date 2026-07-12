@@ -5,6 +5,8 @@ import os
 from groq import (Groq, APIConnectionError, RateLimitError, AuthenticationError, BadRequestError, InternalServerError)
 from database import connect_database, create_profile
 from discord.ext import tasks
+from flask import Flask
+import threading
 
 load_dotenv()
 
@@ -15,6 +17,16 @@ client_ai = Groq(api_key=GROQ_API_KEY)
 
 intents = discord.Intents.default()
 intents.message_content = True
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Yoyo Bot is running!"
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
 
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
@@ -855,4 +867,5 @@ async def missed_tasks_check():
     cursor.close()
     db.close()
 
+threading.Thread(target=run_web, daemon=True).start()
 bot.run(TOKEN)
