@@ -5,6 +5,8 @@ Yoyo is an AI-powered Discord assistant designed to support students throughout 
 ## 🔗 Invite Link
 https://top.gg/bot/1521823983454912675?s=095bc981144c1
 
+---
+
 ## ✨ Features
 
 ### 🤖 AI Learning Tutor
